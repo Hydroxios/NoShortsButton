@@ -1,35 +1,35 @@
 # No Shorts Button
 
-Extension Chrome/Edge pour masquer le bouton "Shorts" sur YouTube.
+Chrome/Edge extension to hide the "Shorts" button on YouTube.
 
-## Fonctionnalites
-- Supprime le lien/bouton "Shorts" sur les pages YouTube lorsque l'interrupteur est actif.
-- Surveille en continu les changements du DOM (MutationObserver) pour retirer les nouveaux boutons qui reapparaissent.
-- Etat de l'interrupteur memorise dans `chrome.storage.local` pour conserver votre preference.
+## Features
+- Removes the "Shorts" link/button on YouTube pages when the toggle is enabled.
+- Continuously watches DOM changes (MutationObserver) to remove any new buttons that reappear.
+- Toggle state is stored in `chrome.storage.local` to keep your preference.
 
-## Installation (mode developpeur)
-1. Telechargez ou clonez ce depot sur votre machine.
-2. Ouvrez `chrome://extensions` (ou `edge://extensions`).
-3. Activez **Mode developpeur**.
-4. Cliquez sur **Charger l'extension non empaquetee** et selectionnez le dossier du projet.
-5. Assurez-vous que l'extension est activee dans la liste.
+## Install (developer mode)
+1. Download or clone this repo to your machine.
+2. Open `chrome://extensions` (or `edge://extensions`).
+3. Enable **Developer mode**.
+4. Click **Load unpacked** and select this project folder.
+5. Make sure the extension is toggled on in the list.
 
-## Utilisation
-- Ouvrez YouTube puis cliquez sur l'icone de l'extension.
-- Activez l'interrupteur dans le popup pour cacher le bouton "Shorts" (desactive par defaut).
-- Rechargez la page YouTube si vous venez de changer l'etat pour appliquer la preference.
-- L'extension se contente de retirer l'element du menu et ne collecte aucune donnee.
+## Usage
+- Open YouTube and click the extension icon.
+- Use the popup toggle to hide the "Shorts" button (off by default).
+- Reload the YouTube page after changing the state to apply the preference.
+- The extension only removes the menu element and does not collect data.
 
-## Structure du projet
-- `manifest.json` : configuration Manifest V3 et permissions (`activeTab`, `storage`, hote `youtube.com`).
-- `content.js` : suppression du bouton "Shorts" et observation du DOM.
-- `popup.html` / `popup.js` : interface simple pour activer/desactiver la suppression et stocker la preference.
-- `icon.png` : icone de l'extension.
+## Project structure
+- `manifest.json`: Manifest V3 config and permissions (`activeTab`, `storage`, host `youtube.com`).
+- `content.js`: Removes the "Shorts" button and observes the DOM.
+- `popup.html` / `popup.js`: Simple UI to enable/disable removal and store the preference.
+- `icon.png`: Extension icon.
 
-## Personnalisation rapide
-- Cible different : mettez a jour le selecteur dans `content.js` si YouTube change le titre ou la structure du lien "Shorts".
-- Comportement par defaut : dans `popup.js`, changez la valeur initiale `result.nsb || false` si vous voulez que l'extension soit active par defaut.
+## Quick tweaks
+- Different target: update the selector in `content.js` if YouTube changes the title or structure of the "Shorts" link.
+- Default behavior: in `popup.js`, change the initial value `result.nsb || false` if you want the extension on by default.
 
-## Limitations connues
-- Si YouTube change le titre ou la structure du bouton "Shorts", il faudra ajuster le selecteur.
-- Le bouton peut reapparaitre temporairement pendant le chargement initial avant que le script ne le retire.
+## Known limitations
+- If YouTube changes the title or structure of the "Shorts" button, adjust the selector.
+- The button may flash briefly during initial page load before the script removes it.
