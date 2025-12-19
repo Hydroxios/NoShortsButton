@@ -16,7 +16,7 @@ Chrome/Edge extension to hide the "Shorts" button on YouTube.
 
 ## Usage
 - Open YouTube and click the extension icon.
-- Use the popup toggle to hide the "Shorts" button (off by default).
+- Use the popup toggle to hide the "Shorts" button (on by default).
 - Reload the YouTube page after changing the state to apply the preference.
 - The extension only removes the menu element and does not collect data.
 
@@ -28,7 +28,7 @@ Chrome/Edge extension to hide the "Shorts" button on YouTube.
 
 ## Quick tweaks
 - Different target: update the selector in `content.js` if YouTube changes the title or structure of the "Shorts" link.
-- Default behavior: in `popup.js`, change the initial value `result.nsb || false` if you want the extension on by default.
+- Default behavior: update `popup.js` if you want a different default than "on".
 
 ## Known limitations
 - If YouTube changes the title or structure of the "Shorts" button, adjust the selector.

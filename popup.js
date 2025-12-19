@@ -1,22 +1,20 @@
-document.addEventListener("DOMContentLoaded", function () {
+﻿document.addEventListener("DOMContentLoaded", () => {
+  const toggle = document.getElementById("toggle");
 
-  console.log(chrome)
-
-  // Charger l'état du checkbox au démarrage
+  // Default to enabled when no preference exists
   chrome.storage.local.get(["nsb"], (result) => {
-    console.log(result)
-    document.getElementById("toggle").checked = result.nsb || false;
+    const stored = result.nsb;
+    const isEnabled = stored === undefined ? true : stored;
+    toggle.checked = isEnabled;
+    if (stored === undefined) {
+      chrome.storage.local.set({ nsb: isEnabled });
+    }
   });
 
-  // Sauvegarder l'état lorsque l'utilisateur modifie le checkbox
-  document.getElementById("toggle").addEventListener("change", (event) => {
+  toggle.addEventListener("change", (event) => {
     const isEnabled = event.target.checked;
     chrome.storage.local.set({ nsb: isEnabled }, () => {
-      console.log("Préférence sauvegardée :", isEnabled);
-
-      chrome.storage.local.get(["nsb"], (result) => {
-        console.log(result)
-      });
+      console.log("Preference saved:", isEnabled);
     });
   });
 });
