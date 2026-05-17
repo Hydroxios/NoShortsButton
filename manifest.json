@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "No Shorts Button",
+  "name": "No Shorts",
   "version": "1.0",
-  "description": "Supprime automatiquement le bouton Shorts sur YouTube.",
+  "description": "Supprime automatiquement les Shorts de l'interface YouTube.",
   "permissions": ["activeTab", "storage"],
   "host_permissions": ["https://www.youtube.com/*"],
   "content_scripts": [
