@@ -15,6 +15,14 @@
     const isEnabled = event.target.checked;
     chrome.storage.local.set({ nsb: isEnabled }, () => {
       console.log("Preference saved:", isEnabled);
+
+      if (!isEnabled) {
+        chrome.tabs.query({ active: true, currentWindow: true }, ([tab]) => {
+          if (tab?.id !== undefined) {
+            chrome.tabs.reload(tab.id);
+          }
+        });
+      }
     });
   });
 });
